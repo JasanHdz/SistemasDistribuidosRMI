@@ -9,3 +9,4 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IObjetoRemoto {
   public void Saludo(String mensaje) throws RemoteException {
     System.out.println(mensaje);
   }
+}

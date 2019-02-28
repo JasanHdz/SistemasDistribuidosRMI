@@ -1,4 +1,3 @@
-import java.rmi.registry.*;
 // El comando rmiregistry inicia un registro de objetos remotos en el puerto especificado en el host actual.
 /*
 
@@ -9,14 +8,14 @@ Simplemente crea una referencia local al registro remoto y tendrá éxito inclus
 Por lo tanto, una invocación de método posterior a un registro remoto devuelto como resultado de este método puede fallar.
 
 */
-class Servidor {
-  public static void main(String[] args) {
+import java.rmi.registry.*;
+
+public class Servidor {
+
+  public static void main(String []args) {
     try {
       Registry registro = LocateRegistry.createRegistry(2320);
-      
       registro.rebind("SistemasDistribuidos", new ObjetoRemoto());
-    } catch(Exception e) {
-      e.printStackTrace();
-    }
+    } catch(Exception e) {  e.printStackTrace();  }
   }
 }
