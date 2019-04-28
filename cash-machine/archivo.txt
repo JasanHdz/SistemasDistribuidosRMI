@@ -1,0 +1,4 @@
+numerocuenta:1001
+cliente:Pedro García
+saldo:20000
+nip:2244
