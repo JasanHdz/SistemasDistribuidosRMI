@@ -1,19 +1,49 @@
 import java.rmi.Naming;
 import java.util.Scanner;
 import java.util.Date;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 public class Cliente {
+  public static void muestraContenido(String archivo) throws FileNotFoundException, IOException {
+		String cadena;
+		String aux = "";
+		FileReader f = new FileReader(archivo);
+		BufferedReader b = new BufferedReader(f);
+		while((cadena = b.readLine()) != null) {
+			aux += cadena;
+		}
+		b.close();
+		System.out.println(aux);
+		String[] parts = aux.split(":");
+		int index = 0;
+		for (String string : parts) {
+			System.out.println(string);
+			index++;
+		}
+		int numcuenta = Integer.parseInt(parts[1]);
+		String cliente = parts[3];
+		int saldo = Integer.parseInt(parts[5]);
+		int nip = Integer.parseInt(parts[7]);
+		int movimientos = Integer.parseInt(parts[9]);
+
+    /** Vamos a crear el ObjetoRemoto */
+     // Aquí vamos a ejecutar nuestro objeto remoto.
+      ObjetoRemoto cliente1 = new ObjetoRemoto(numcuenta, cliente, saldo, movimientos);
+      cliente1.setNip(nip);
+      showIngresar(cliente1);
+
+	}
+
   public static void main(String []args) {
     try {
       System.setProperty("java.security.policy", "rmi.policy");
       System.setSecurityManager(new SecurityManager());
       IObjetoRemoto objrem = (IObjetoRemoto) Naming.lookup("rmi://localhost:2000/SistemasDistribuidos");
 
-      // Aquí vamos a ejecutar nuestro objeto remoto.
-      ObjetoRemoto cliente1 = new ObjetoRemoto(1001, "Jorge Ramos", 20000, 0);
-      // Creando Nip
-      cliente1.setNip(2244);
-      showIngresar(cliente1);
+      muestraContenido("archivo.txt");
 
     } catch(Exception e) {
         e.printStackTrace();
@@ -86,6 +116,7 @@ public class Cliente {
           } else {
              System.out.println("No pongas número negativos solo pon un número");
           }
+          
           Scanner sc4 = new Scanner(System.in); 
           System.out.println("0. Para regresar al menú anterior");
           if(sc4.nextInt() == 0) {
