@@ -109,10 +109,14 @@ public class Cliente {
           System.out.println("Porfavor ingrese la cantidad que desee retirar: ");
           Scanner sc2 = new Scanner(System.in);
           int money2 = sc2.nextInt();
-          if(money2 > 0) {
-            cliente.Retirar(money2);
-            System.out.println("A continuación puede recoger su dinero en la bandeja...");
-            System.out.println("Transacción realizada Correctamente!! Vuelva proto!");
+          if((money2 > 0) {
+            if(money2 < cliente.getSaldo()) {
+              cliente.Retirar(money2);
+              System.out.println("A continuación puede recoger su dinero en la bandeja...");
+              System.out.println("Transacción realizada Correctamente!! Vuelva proto!");
+            } else {
+              System.out.println("Saldo insuficiente :(");
+            }
           } else {
              System.out.println("No pongas número negativos solo pon un número");
           }
