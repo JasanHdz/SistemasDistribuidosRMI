@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"com.jasanhdz.atmia.main"},{"l":"com.jasanhdz.atmia.models"}]

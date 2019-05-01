@@ -2,4 +2,16 @@ numerocuenta:1001:
 cliente:Pedro García:
 saldo:20000:
 nip:2244:
+
+movimientos:0:
+numerocuenta:1001:
+cliente:Roberto Salazar:
+saldo:20000:
+nip:2344:
+
+movimientos:0:
+numerocuenta:1001:
+cliente:Alan Gutierrez:
+saldo:20000:
+nip:2544:
 movimientos:0:

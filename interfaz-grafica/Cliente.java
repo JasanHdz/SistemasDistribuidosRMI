@@ -22,25 +22,41 @@ public class Cliente {
 		b.close();
 		// System.out.println(aux);
 		String[] parts = aux.split(":");
-		int index = 0;
+		// int index = 0;
 		// for (String string : parts) {
 		// 	System.out.println(string);
 		// 	index++;
 		// }
 		int numcuenta = Integer.parseInt(parts[1]);
-		String cliente = parts[3];
-		int saldo = Integer.parseInt(parts[5]);
+		String nameCliente1 = parts[3];
+		float saldo = Float.parseFloat(parts[5]);
 		int nip = Integer.parseInt(parts[7]);
 		int movimientos = Integer.parseInt(parts[9]);
+		
+		int numcuenta2 = Integer.parseInt(parts[11]);
+		String nameCliente2 = parts[13];
+		float saldo2 = Float.parseFloat(parts[15]);
+		int nip2 = Integer.parseInt(parts[17]);
+		int movimientos2 = Integer.parseInt(parts[19]);
+		
+		int numcuenta3 = Integer.parseInt(parts[21]);
+		String nameCliente3 = parts[23];
+		float saldo3 = Float.parseFloat(parts[25]);
+		int nip3 = Integer.parseInt(parts[27]);
+		int movimientos3 = Integer.parseInt(parts[29]);
 
     /** Vamos a crear el ObjetoRemoto */
      // Aquí vamos a ejecutar nuestro objeto remoto.
-      ObjetoRemoto cliente1 = new ObjetoRemoto(numcuenta, cliente, saldo, movimientos);
+      ObjetoRemoto cliente1 = new ObjetoRemoto(numcuenta, nameCliente1, saldo, movimientos);
       cliente1.setNip(nip);
       cliente1.showIngresar();
 
-      ObjetoRemoto cliente2 = new ObjetoRemoto(100, "Pedro Salazar", 40000, 10);
-      cliente2.setNip(2344);
+      ObjetoRemoto cliente2 = new ObjetoRemoto(numcuenta2, nameCliente2, saldo2, movimientos);
+      cliente2.setNip(nip2);
+      cliente2.showIngresar();
+      
+			ObjetoRemoto cliente3 = new ObjetoRemoto(numcuenta3, nameCliente3, saldo2, movimientos3);
+      cliente2.setNip(nip3);
       cliente2.showIngresar();
 	}
 

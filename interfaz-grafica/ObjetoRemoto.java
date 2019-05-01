@@ -24,16 +24,16 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IObjetoRemoto {
   private int consultaNip;
   private int response;
   private int exit = 0;
-  private int cantidad = 0;
+  private float cantidad = 0;
   
   public ObjetoRemoto() throws RemoteException {
     super();
   }
 
-  public int getCantidad() {
+  public float getCantidad() {
     return cantidad;
   }
-  public void setCantidad(int cantidad) {
+  public void setCantidad(float cantidad) {
     this.cantidad = cantidad;
   }
   public int getExit() {
@@ -117,7 +117,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IObjetoRemoto {
     }
   }
   // @Override
-  public void Depositar(int cantidad) throws RemoteException {
+  public void Depositar(float cantidad) throws RemoteException {
     if(cantidad > 0) {
         float saldoActual = getSaldo() + cantidad;
         setSaldo(saldoActual);
@@ -361,7 +361,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IObjetoRemoto {
               public void actionPerformed(ActionEvent arg0) {
                 // TODO Auto-generated method stub
                
-                setCantidad(Integer.parseInt(cajaTexto.getText()));
+                setCantidad(Float.parseFloat(cajaTexto.getText()));
                 if(getCantidad() > 0) {
                   ventana1.dispose();
                   try {
@@ -401,7 +401,38 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IObjetoRemoto {
                   } catch(Exception e) {
                     e.printStackTrace();
                   }
-                }              
+                } else {
+                    Frame ventana1 = new Frame();
+                    ventana1.setTitle("Cajero Automático");
+                    ventana1.setVisible(true);
+
+                    JPanel panel1 = new JPanel();
+                    panel1.setLayout(null);
+                    ventana1.getContentPane().add(panel1);
+
+                    JLabel etiqueta = new JLabel("No pongas número negativos solo pon un número"); //Creamos una etiqueta
+                    etiqueta.setBounds(0, 30, 400, 30);
+                    etiqueta.setOpaque(true); //Establecemos pintar el fondo de la etiqueta.
+                    etiqueta.setHorizontalAlignment(SwingConstants.CENTER);
+                    panel1.add(etiqueta);
+
+                    JButton btn1 = new JButton();
+                    btn1.setBounds(100, 80, 200, 40);
+                    btn1.setText("Regresar Menú");
+                    panel1.add(btn1);
+
+                    ActionListener action2 = new ActionListener() {
+      
+                      @Override
+                      public void actionPerformed(ActionEvent arg0) {
+                        // TODO Auto-generated method stub
+                        ventana1.dispose();
+                        showMenu();                
+                      }
+                    };
+                    
+                    btn1.addActionListener(action2);
+                }             
               }
             };
             
@@ -447,7 +478,7 @@ public class ObjetoRemoto extends UnicastRemoteObject implements IObjetoRemoto {
             @Override
             public void actionPerformed(ActionEvent arg0) {
               // TODO Auto-generated method stub
-              setCantidad(Integer.parseInt(cajaTexto1.getText()));
+              setCantidad(Float.parseFloat(cajaTexto1.getText()));
               ventana2.dispose();
               if(getCantidad() > 0) {
                 if(getCantidad() < getSaldo()) {

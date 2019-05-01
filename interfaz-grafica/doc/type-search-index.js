@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"com.jasanhdz.atmia.main","l":"Cliente"},{"p":"com.jasanhdz.atmia.models","l":"Frame"},{"p":"com.jasanhdz.atmia.models","l":"IObjetoRemoto"},{"p":"com.jasanhdz.atmia.models","l":"ObjetoRemoto"},{"p":"com.jasanhdz.atmia.main","l":"Servidor"}]
